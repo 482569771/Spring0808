@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>勤怠情報登録更新</title>
+</head>
+<body>
+    <h1>　　　　　　　　　　　勤怠情報登録更新</h1>
+    <table>
+        <thead>
+            <tr><th>社員ID　　</th><td th:text="${}"></td></tr>
+            <tr><th>社員名　　</th><td th:text="${}"></td></tr>
+            <tr><th>所属部門　　</th><td th:text="${}"></td></tr>
+
+        <tr><th>　</th></tr>
+        <tr>
+            <th>年度　　</th>
+            <th>　　</th>
+        </tr>
+
+	  <tr><th>　</th></tr>
+   	  <th><button class="button">戻る</a></th></tr>
+
+	  <tr><th>　</th></tr>
+	   <tr>
+                <th>日付　　</th>
+                <th>作業開始時間　　</th>
+                <th>作業終了時間　　</th>
+                <th>休憩時間　　</th>
+                <th>残業時間　　</th>
+                <th>状態　　</th>
+                <th>申請事由　　</th>
+                <th>作業内容　　</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="">
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
