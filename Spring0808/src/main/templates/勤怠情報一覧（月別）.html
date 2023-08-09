@@ -2,34 +2,31 @@
 <html>
 <head>
     <title>勤怠情報一覧（月別）</title>
+	<link rel="stylesheet" type="text/css" href="勤怠情報一覧%EF%BC%88%E6%9C%88%E5%88%A5%EF%BC%89.css">
 </head>
 <body>
-    <h1>　　　　　　　　　　　勤怠情報一覧（月別）</h1>
+    <h1>勤怠情報一覧（月別）</h1>
     <table>
         <thead>
-            <tr><th>社員ID　　</th><td th:text="${}"></td></tr>
-            <tr><th>社員名　　</th><td th:text="${}"></td></tr>
-            <tr><th>所属部門　　</th><td th:text="${}"></td></tr>
-
-        <tr><th>　</th></tr>
-        <tr>
-            <th>年度　　</th>
-            <th>　　</th>
-        </tr>
-
-	  <tr><th>　</th></tr>
-   	  <th><button class="button">戻る</a></th></tr>
-
-	  <tr><th>　</th></tr>
-	   <tr>
-                <th>月　　</th>
-                <th>営業日数　　</th>
-                <th>出勤日数　　</th>
-                <th>欠勤日数　　</th>
-                <th>実働時間（H）　　</th>
-                <th>残業時間（H）　　</th>
-                <th>コメント　　</th>
-
+            <tr>
+                <th>社員ID </th><td th:text="${}"></td></tr>
+                <th>社員名 </th><td th:text="${}"></td></tr>
+                <th>所属部門 </th><td th:text="${}"></td></tr>
+            </tr>
+            <tr><th></th></tr>
+            <tr>
+                <th>年度</th>
+                <th></th>
+            </tr>
+            <tr><th></th></tr>
+            <tr>
+                <th>月</th>
+                <th>営業日数</th>
+                <th>出勤日数</th>
+                <th>欠勤日数</th>
+                <th>実働時間（H）</th>
+                <th>残業時間（H）</th>
+                <th>コメント</th>
             </tr>
         </thead>
         <tbody>
@@ -44,5 +41,6 @@
             </tr>
         </tbody>
     </table>
+    <button class="button">戻る</button>
 </body>
 </html>
