@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssm.demo.entity.AttendanceRegistrationUpdateEntity;
+import com.ssm.demo.form.RegisterForm;
 import com.ssm.demo.service.AttendanceRegistrationUpdateService;
 
 @Controller
@@ -19,10 +20,10 @@ public class AttendanceRegistrationUpdateController {
     private AttendanceRegistrationUpdateService attendanceService;
     //处理GET请求，展示勤怠信息登记更新页面
     @GetMapping("/update")
-    public String showUpdatePage(Model model) {
+    public String showUpdatePage(Model model,RegisterForm registerForm) {
     	//创建一个空的勤怠信息对象，并添加到模型中
         model.addAttribute("attendance", new AttendanceRegistrationUpdateEntity());
-        return "勤怠情報登録更新"; 
+        return "ATTUpdate"; 
         //返回前端页面的文件名
     }
     

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>勤怠情報登録更新</title>
+<link rel="stylesheet" type="text/css" href="ATTUpdate.css">
+</head>
+<body>
+	<h1>勤怠情報登録更新</h1>
+	<form th:action="@{}"
+		th:object="${registerForm}" th:method="post">
+		<table>
+			<thead>
+				<tr>
+					<th>社員ID</th>
+					<td></td>
+					<th>社員名</th>
+					<td></td>
+					<th>所属部門</th>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>日付</th>
+					<td class="input-cell"><input type="text" th:field="*{attendanceDate}"></td>
+				</tr>
+				<tr>
+					<th>作業開始時間</th>
+					<td class="input-cell"><input type="text" th:field="*{startTime}"></td>
+				</tr>
+				<tr>
+					<th>作業終了時間</th>
+					<td class="input-cell"><input type="text" th:field="*{endTime}"></td>
+				</tr>
+				<tr>
+					<th>休憩時間</th>
+					<td class="input-cell"><input type="text" th:field="*{restHours}"></td>
+				</tr>
+				<tr>
+					<th>残業時間</th>
+					<td class="input-cell"><input type="text" th:field="*{overtimeHours}"></td>
+				</tr>
+				<tr>
+					<th>状態</th>
+					<td class="input-cell"><input type="text" th:field="*{statusId}"></td>
+				</tr>
+				<tr>
+					<th>申請事由</th>
+					<td class="input-cell"><input type="text" ></td>
+				</tr>
+				<tr>
+					<th>作業内容</th>
+					<td class="input-cell"><input type="text" th:field="*{remarks}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="button-group">
+			<button class="button">更新</button>
+			<button class="button">登録</button>
+			<button class="button">戻る</button>
+		</div>
+	</form>
+</body>
+</html>

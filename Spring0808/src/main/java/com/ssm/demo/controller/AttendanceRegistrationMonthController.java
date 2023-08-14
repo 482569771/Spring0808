@@ -15,6 +15,6 @@ public class AttendanceRegistrationMonthController {
         // 例如：List<AttendanceEntity> attendanceList = attendanceService.getAllAttendances();
         // model.addAttribute("attendanceList", attendanceList);
 
-        return "勤怠情報一覧（月別）.html"; // 返回前端页面的文件名
+        return "ATTMonth"; // 返回前端页面的文件名
     }
 }
