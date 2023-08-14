@@ -1,12 +1,15 @@
 package com.ssm.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+
 //引入javax.persistence中的@Entity注解，表示这是一个JPA实体类
 
 @Entity
+@Data
 public class AttendanceRegistrationUpdateEntity {
 
 	//主键标识，使用自增策略生成
@@ -23,80 +26,7 @@ public class AttendanceRegistrationUpdateEntity {
     private String status;
     private String reason;
     private String workContent;
-    
-    //下面是各个属性的getter和setter方法，用于访问和修改属性值
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getRestTime() {
-        return restTime;
-    }
-
-    public void setRestTime(String restTime) {
-        this.restTime = restTime;
-    }
-
-    public String getOvertime() {
-        return overtime;
-    }
-
-    public void setOvertime(String overtime) {
-        this.overtime = overtime;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public String getWorkContent() {
-        return workContent;
-    }
-
-    public void setWorkContent(String workContent) {
-        this.workContent = workContent;
-    }
 }
 
 //这段代码定义了一个名为

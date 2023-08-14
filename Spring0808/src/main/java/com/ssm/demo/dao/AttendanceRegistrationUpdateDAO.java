@@ -2,6 +2,9 @@ package com.ssm.demo.dao;
 //这个部分声明了当前文件所在的包路径。
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.ssm.demo.entity.AttendanceRegistrationUpdateEntity;
 //这些语句用于导入需要使用的类
