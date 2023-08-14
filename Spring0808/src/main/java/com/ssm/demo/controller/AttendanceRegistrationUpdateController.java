@@ -25,6 +25,7 @@ public class AttendanceRegistrationUpdateController {
         return "勤怠情報登録更新"; 
         //返回前端页面的文件名
     }
+    
     //处理POST请求，提交勤怠信息
     @PostMapping("/submit")
     public String submitAttendance(AttendanceRegistrationUpdateEntity attendance) {
