@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>勤怠情報一覧（日別）</title>
-    <link rel="stylesheet" type="text/css" href="ATTDAY.css">
+<title>勤怠情報一覧（日別）</title>
+<link rel="stylesheet" type="text/css" href="ATTDAY.css">
 </head>
 <body>
-    <h1>勤怠情報一覧（日別）</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>社員ID</th><td th:text="${}"></td>
-                <th>社員名</th><td th:text="${}"></td>
-                <th>所属部門</th><td th:text="${}"></td>
-            </tr>
-            <tr>
-                <th colspan="6"></th>
-            </tr>
-            <tr>
-                <th colspan="2">日付</th>
-                <td colspan="2"><input type="date" id="date"></td>
-                <th colspan="2">状態選択</th>
-                <td colspan="2">
-                    <select id="status">
-                        <option value="0">出勤</option>
-                        <option value="1">遅刻</option>
-                        <option value="2">早退</option>
-                        <option value="3">休み</option>
-                        <option value="4">その他</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th colspan="8"></th>
-            </tr>
-            <tr>
-                <th>日付</th>
-                <th>出勤時間</th>
-                <th>退勤時間</th>
-                <th>休憩時間</th>
-                <th>残業時間</th>
-                <th>実働時間</th>
-                <th>状態</th>
-                <th>作業内容</th>
-                <th>修正</th>
-                <th>削除</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="">
-                <td th:text=""></td>
-                <td th:text=""></td>
-                <td th:text=""></td>
-                <td th:text=""></td>
-                <td th:text=""></td>
-                <td th:text=""></td>
-                <td th:text=""></td>
-                <td th:text=""></td>
-                <td th:text=""></td>
-                <td th:text=""></td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="button-group">
-        <button class="button">検索</button>
-        <button class="button">新規作成</button>
-        <button class="button">戻る</button>
-    </div>
+	<h1>勤怠情報一覧（日別）</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>社員ID</th>
+				<td></td>
+				<th>社員名</th>
+				<td></td>
+				<th>所属部門</th>
+				<td></td>
+			</tr>
+			<tr>
+				<th colspan="6"></th>
+			</tr>
+			<tr>
+				<th>日付</th>
+				<td colspan="2"><input type="date" id="date"></td>
+				<th>状態</th>
+				<td class="input-cell"><select th:field="*{statusId}">
+						<option th:each="option : ${statusOptions}"
+							th:value="${option.value}" th:text="${option.label}"></option>
+				</select></td>
+				</td>
+			</tr>
+			<tr>
+				<th colspan="8"></th>
+			</tr>
+			<tr>
+				<th>日付</th>
+				<th>出勤時間</th>
+				<th>退勤時間</th>
+				<th>休憩時間</th>
+				<th>残業時間</th>
+				<th>実働時間</th>
+				<th>状態</th>
+				<th>作業内容</th>
+				<th>修正</th>
+				<th>削除</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="attendance : ${attendanceList}">
+				<td th:text="${attendance.attendanceDate}"></td>
+				<td th:text="${attendance.startTime}"></td>
+				<td th:text="${attendance.endTime}"></td>
+				<td th:text="${attendance.restHours}"></td>
+				<td th:text="${attendance.overtimeHours}"></td>
+				<td th:text="${attendance.actualHours}"></td>
+				<td th:text="${attendance.status}"></td>
+				<td th:text="${attendance.remarks}"></td>
+				<td><a th:href="@{/edit/{id}(id=${attendance.id})}">修正</a></td>
+				<td><a th:href="@{/delete/{id}(id=${attendance.id})}">削除</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="button-group">
+		<button class="button">検索</button>
+		<button class="button">新規作成</button>
+		<button class="button">戻る</button>
+	</div>
 </body>
 </html>

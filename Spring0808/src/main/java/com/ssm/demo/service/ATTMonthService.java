@@ -14,6 +14,4 @@ public class ATTMonthService {
     public void saveAttendanceMonth(ATTMonthEntity attendanceMonth) {
         attendanceMonthDAO.save(attendanceMonth);
     }
-
-    // 添加其他需要的方法，比如查询特定月份的勤怠信息等
 }
