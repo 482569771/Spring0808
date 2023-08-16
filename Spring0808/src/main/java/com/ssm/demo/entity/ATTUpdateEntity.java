@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class AttendanceRegistrationUpdateEntity {
+public class ATTUpdateEntity {
 
 	//主键标识，使用自增策略生成
     @Id

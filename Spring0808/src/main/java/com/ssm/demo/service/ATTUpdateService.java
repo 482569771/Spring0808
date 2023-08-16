@@ -6,8 +6,8 @@ import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ssm.demo.dao.AttendanceRegistrationUpdateDAO;
-import com.ssm.demo.entity.AttendanceRegistrationUpdateEntity;
+import com.ssm.demo.dao.ATTUpdateDAO;
+import com.ssm.demo.entity.ATTUpdateEntity;
 import com.ssm.demo.form.RegisterForm;
 import com.ssm.demo.mapper.ATTMapper;
 

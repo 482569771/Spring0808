@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class AttendanceRegistrationMonthEntity {
+public class ATTMonthEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

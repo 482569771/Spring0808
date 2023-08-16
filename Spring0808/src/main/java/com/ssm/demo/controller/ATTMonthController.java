@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/attendance-registration-month")
-public class AttendanceRegistrationMonthController {
+public class ATTMonthController {
 
     @GetMapping
     public String showAttendanceList(Model model) {

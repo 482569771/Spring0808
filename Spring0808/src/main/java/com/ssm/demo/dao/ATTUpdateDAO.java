@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import com.ssm.demo.entity.AttendanceRegistrationUpdateEntity;
+import com.ssm.demo.entity.ATTUpdateEntity;
 //这些语句用于导入需要使用的类
 //这里包括了SpringDataJPA相关的类
 //以及你项目中的实体类AttendanceRegistrationUpdateEntity。
 
 @Repository
 //这是一个Spring注解，用于将这个接口标记为数据访问层的组件。
-public interface AttendanceRegistrationUpdateDAO extends JpaRepository<AttendanceRegistrationUpdateEntity, Long> {
+public interface ATTUpdateDAO extends JpaRepository<ATTUpdateEntity, Long> {
 //这个接口定义了你的DAO接口
 //AttendanceRegistrationUpdateDAO
 //它继承了SpringDataJPA的JpaRepository接口
@@ -21,12 +21,12 @@ public interface AttendanceRegistrationUpdateDAO extends JpaRepository<Attendanc
 //（表示实体类的类型）和 Long（表示主键的类型）。
 	
 	
-	List<AttendanceRegistrationUpdateEntity> findByDate(String date);
+	List<ATTUpdateEntity> findByDate(String date);
 	//这是一个自定义查询方法，它声明了根据日期查询记录的操作。
 	//SpringDataJPA会根据方法名自动生成相应的查询语句。
 	//自定义查询方法，根据状态查询记录
     @Query("SELECT a FROM AttendanceRegistrationUpdateEntity a WHERE a.status = :status")
-    List<AttendanceRegistrationUpdateEntity> findByStatus(String status);
+    List<ATTUpdateEntity> findByStatus(String status);
     //这是一个自定义查询方法，它使用@Query注解来声明一个自定义的查询语句
     //用于查询符合特定状态的记录。
     //这段代码的主要作用是定义了一个接口
