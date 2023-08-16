@@ -6,8 +6,8 @@
 </head>
 <body>
 	<h1>勤怠情報登録更新</h1>
-	<form th:action="@{/submit}"
-		th:object="${registerForm}" th:method="post">
+	<form th:action="@{/submit}" th:object="${registerForm}"
+		th:method="post">
 		<table>
 			<thead>
 				<tr>
@@ -22,36 +22,44 @@
 			<tbody>
 				<tr>
 					<th>日付</th>
-					<td class="input-cell"><input type="date" th:field="*{attendanceDate}"></td>
+					<td class="input-cell"><input type="date"
+						th:field="*{attendanceDate}"></td>
 				</tr>
 				<tr>
 					<th>作業開始時間</th>
-					<td class="input-cell"><input type="time" th:field="*{startTime}"></td>
+					<td class="input-cell"><input type="time"
+						th:field="*{startTime}"></td>
 				</tr>
 				<tr>
 					<th>作業終了時間</th>
-					<td class="input-cell"><input type="time" th:field="*{endTime}"></td>
+					<td class="input-cell"><input type="time"
+						th:field="*{endTime}"></td>
 				</tr>
 				<tr>
 					<th>休憩時間</th>
-					<td class="input-cell"><input type="text" th:field="*{restHours}"></td>
+					<td class="input-cell"><input type="text"
+						th:field="*{restHours}"></td>
 				</tr>
 				<tr>
 					<th>残業時間</th>
-					<td class="input-cell"><input type="text" th:field="*{overtimeHours}"></td>
+					<td class="input-cell"><input type="text"
+						th:field="*{overtimeHours}"></td>
 				</tr>
 				<tr>
 					<th>状態</th>
-					<td class="input-cell"><input type="text" th:field="*{statusId}"></td>
-					
+					<td class="input-cell"><select th:field="*{statusId}">
+							<option th:each="option : ${statusOptions}"
+								th:value="${option.value}" th:text="${option.label}"></option>
+					</select></td>
 				</tr>
 				<tr>
 					<th>申請事由</th>
-					<td class="input-cell"><input type="text" ></td>
+					<td class="input-cell"><input type="text"></td>
 				</tr>
 				<tr>
 					<th>作業内容</th>
-					<td class="input-cell"><textarea rows="5" th:field="*{remarks}"></textarea></td>
+					<td class="input-cell"><textarea rows="5"
+							th:field="*{remarks}"></textarea></td>
 				</tr>
 			</tbody>
 		</table>
@@ -63,3 +71,6 @@
 	</form>
 </body>
 </html>
+
+
+
