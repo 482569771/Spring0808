@@ -25,7 +25,7 @@ public interface ATTUpdateDAO extends JpaRepository<ATTUpdateEntity, Long> {
 	//这是一个自定义查询方法，它声明了根据日期查询记录的操作。
 	//SpringDataJPA会根据方法名自动生成相应的查询语句。
 	//自定义查询方法，根据状态查询记录
-    @Query("SELECT a FROM AttendanceRegistrationUpdateEntity a WHERE a.status = :status")
+    @Query("SELECT a FROM ATTUpdateEntity a WHERE a.status = :status")
     List<ATTUpdateEntity> findByStatus(String status);
     //这是一个自定义查询方法，它使用@Query注解来声明一个自定义的查询语句
     //用于查询符合特定状态的记录。
