@@ -23,7 +23,13 @@
 				<th>日付</th>
 				<td colspan="2"><input type="date" id="date"></td>
 				<th>状態</th>
-
+				<td class="input-cell"><select name="statusId"
+					>
+						<option value="000">選択してください</option>
+						<option th:each="status : ${statusList}"
+							th:value="${status.statusId}" th:text="${status.statusName}"
+							th:selected="${status.statusId == '000'}"></option>
+				</select></td>
 			</tr>
 			<tr>
 				<th colspan="8"></th>
@@ -42,17 +48,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="attendance : ${attendanceList}" th:object="${attendance}">
+			<tr th:each="attendance : ${attendanceList}"
+				th:object="${attendance}">
 				<td th:text="*{attendanceDate}"></td>
 				<td th:text="*{startTime}"></td>
 				<td th:text="*{endTime}"></td>
 				<td th:text="*{restHours}"></td>
 				<td th:text="*{overtimeHours}"></td>
-				<td th:text="*{actualHours}"></td>
-				<td th:text="*{status}"></td>
+				<td th:text="*{workingHours}"></td>
+				<td th:text="*{statusId}"></td>
 				<td th:text="*{remarks}"></td>
-				<td><a th:href="@{/edit/{id}(id=${attendance.id})}">修正</a></td>
-				<td><a th:href="@{/delete/{id}(id=${attendance.id})}">削除</a></td>
+				<td><a th:href="@{/edit}">修正</a></td>
+				<td><a th:href="@{/delete}">削除</a></td>
 			</tr>
 		</tbody>
 	</table>
