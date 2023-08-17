@@ -1,12 +1,17 @@
 package com.ssm.demo.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ssm.demo.entity.Attendance;
 import com.ssm.demo.form.RegisterForm;
 
 @Mapper
 public interface ATTMapper {
 
+	List<Attendance> findById(String employeeId);
+	//
 	void save(RegisterForm registerForm);
 	//保存注册表单数据到数据库
 	void update(RegisterForm registerForm);

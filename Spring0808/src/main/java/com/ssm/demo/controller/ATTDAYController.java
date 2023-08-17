@@ -1,5 +1,7 @@
 package com.ssm.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ssm.demo.entity.ATTUpdateEntity;
+import com.ssm.demo.entity.Attendance;
 import com.ssm.demo.service.ATTDAYService;
 
 @Controller
@@ -15,16 +18,21 @@ public class ATTDAYController {
     @Autowired
     private ATTDAYService attdayService;
 
-    @GetMapping("/edit/{id}") 
-    public String showEditPage(@PathVariable Long id, Model model) {
-        ATTUpdateEntity attendance = attdayService.getAttendanceById(id);
-        model.addAttribute("attendance", attendance);
-        return "EditAttendancePage"; 
+    @GetMapping("/edit") 
+    public String showEditPage(Model model) {
+    	
+    	List<Attendance> attendanceList = attdayService.getAttendanceById("001");
+    	
+    	
+    	
+        //ATTUpdateEntity attendance = attdayService.getAttendanceById(id);
+        model.addAttribute("attendanceList", attendanceList);
+        return "ATTDAY"; 
     }
 
-    @GetMapping("/delete/{id}") 
+    @GetMapping("/delete") 
     public String deleteAttendance(@PathVariable Long id) {
-        attdayService.deleteAttendanceById(id);
+        //attdayService.deleteAttendanceById(id);
         return "redirect:/update"; 
     }
 }

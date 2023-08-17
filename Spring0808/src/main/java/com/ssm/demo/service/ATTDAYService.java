@@ -1,26 +1,26 @@
 package com.ssm.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssm.demo.dao.ATTDAYDAO;
 import com.ssm.demo.entity.ATTUpdateEntity;
+import com.ssm.demo.entity.Attendance;
+import com.ssm.demo.mapper.ATTMapper;
 
 @Service
 public class ATTDAYService {
 
     @Autowired
-    private ATTDAYDAO attdayDao;
+    private ATTMapper attMapper;
 
-    public ATTUpdateEntity getAttendanceById(Long id) {
-        return attdayDao.findById(id);
+    public List<Attendance> getAttendanceById(String id) {
+        return attMapper.findById(id);
         //通过ID获取特定勤怠信息
     }
 
-    public void deleteAttendanceById(Long id) {
-    	attdayDao.deleteById(id);
-    	//根据ID删除特定勤怠信息
-    }
 }
 //【包名和导入语句】
 //该程序位于com.ssm.demo.service 包中

@@ -48,9 +48,13 @@
 				</tr>
 				<tr>
 					<th>状態</th>
-					<td class="input-cell"><select th:field="*{statusId}">
-							<option th:each="option : ${statusOptions}"
-								th:value="${option.value}" th:text="${option.label}"></option>
+					<td class="input-cell"><select name="statusId" th:field="*{statusId}">
+					<option value="000">選択してください</option>
+							<option th:each="status : ${statusList}"
+								th:value="${status.statusId}" 
+								th:text="${status.statusName}"
+								th:selected="${status.statusId == '000'}"
+								></option>
 					</select></td>
 				</tr>
 				<tr>
