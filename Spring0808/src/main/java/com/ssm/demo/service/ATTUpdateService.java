@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ssm.demo.dao.ATTUpdateDAO;
 import com.ssm.demo.entity.ATTUpdateEntity;
+import com.ssm.demo.entity.Attendance;
 import com.ssm.demo.form.RegisterForm;
 import com.ssm.demo.mapper.ATTMapper;
 
@@ -34,11 +35,58 @@ public class ATTUpdateService {
 
 		form.setEmployeeId("001");
 		form.setWorkingHours(workingHours);
-		
 		form.setAbsenceHours(1.5);
 		attMapper.save(form);
 	}
+	
+	public void update(RegisterForm form) {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		LocalTime startTime = LocalTime.parse(form.getStartTime(), formatter);
+		LocalTime endTime = LocalTime.parse(form.getEndTime(), formatter);
+		
+		long hours = ChronoUnit.MINUTES.between(startTime, endTime);
+		double workingHours = (double) hours / 60 - form.getRestHours() + form.getOvertimeHours();
+
+		form.setEmployeeId("001");
+		form.setWorkingHours(workingHours);
+		form.setAbsenceHours(1.5);
+		attMapper.update(form);
+	}
+	
+	
+	
+	
+	public void updateAttendance(RegisterForm form,String attDate) {
+		Attendance attendance = attMapper.findByDate("001", attDate);
+		form.setEmployeeId(attendance.getEmployeeId());
+		form.setAttendanceDate(attendance.getAttendanceDate());
+		form.setStartTime(attendance.getStartTime());
+		form.setEndTime(attendance.getEndTime());
+		form.setRestHours(attendance.getRestHours());
+		form.setOvertimeHours(attendance.getOvertimeHours());
+		form.setRemarks(attendance.getRemarks());
+	}
+	
+	
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 //上述代码定义了一个名为AttendanceRegistrationUpdateService
 //的服务类，用于处理出勤信息的业务逻辑。
 //它使用了@Service注解，告诉Spring这是一个服务类，

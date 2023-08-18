@@ -7,22 +7,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ssm.demo.entity.ATTUpdateEntity;
 import com.ssm.demo.entity.Attendance;
 import com.ssm.demo.entity.Status;
+import com.ssm.demo.form.SearchForm;
 import com.ssm.demo.mapper.StatusMapper;
 import com.ssm.demo.service.ATTDAYService;
 
 @Controller
-public class ATTDAYController {
-
+public class ATTDAYController {	
     @Autowired
     private ATTDAYService attdayService;
     @Autowired
     private StatusMapper statusMapper;
     @GetMapping("/edit") 
-    public String showEditPage(Model model) {
+    public String showEditPage(SearchForm searchForm,Model model) {
+    	
     	
     	List<Attendance> attendanceList = attdayService.getAttendanceById("001");
 
@@ -39,6 +41,18 @@ public class ATTDAYController {
     public String deleteAttendance(@PathVariable Long id) {
         //attdayService.deleteAttendanceById(id);
         return "redirect:/update"; 
+    }
+    @PostMapping("/search")
+    public String searchAttendance(SearchForm searchForm,Model model) {
+        // 【日期】和【状态】从数据库中获取符合条件的数据
+        List<Attendance> searchedAttendanceList = attdayService.searchAttendance(searchForm);
+
+        List<Status> statusList = statusMapper.FindStatusName();
+        model.addAttribute("statusList", statusList);
+        model.addAttribute("attendanceList", searchedAttendanceList);
+
+        return "ATTDAY"; 
+//返回模板显示搜索结果
     }
 }
 //【@Autowired注解】

@@ -16,7 +16,7 @@ th {
 
 /* 调整日期输入框和状态选择框的样式 */
 #date, #status {
-    width: 100%;
+    width: 80%;
     padding: 6px;
 }
 
@@ -37,4 +37,22 @@ th {
     margin: 4px;
     cursor: pointer;
     border-radius: 4px;
+}
+.btn {
+  display: inline-block;
+  padding: 2px 7px;
+  background-color: #4CAF50; /* 例: 緑色の背景 */
+  color: #ffffff; /* 例: 文字色は白 */
+  border: none; /* ボーダーを非表示に */
+  border-radius: 5px; /* 角を丸くする */
+  text-align: center;
+  text-decoration: none; /* テキストの下線を非表示に */
+  font-size: 16px;
+  cursor: pointer; /* カーソルをポインターに変更 */
+  transition: background-color 0.3s; /* 背景色の遷移効果を追加 */
+}
+
+/* ホバー時のスタイル */
+.btn:hover {
+  background-color: #45a049; /* ホバー時の背景色を少し暗く */
 }

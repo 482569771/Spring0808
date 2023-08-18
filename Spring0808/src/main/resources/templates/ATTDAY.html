@@ -2,10 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>勤怠情報一覧（日別）</title>
-<link rel="stylesheet" type="text/css" href="ATTDAY.css">
+<link rel="stylesheet" type="text/css" href="/ATTDAY.css">
+<script src="/submitForm.js"></script>
+
 </head>
 <body>
 	<h1>勤怠情報一覧（日別）</h1>
+	<form id="selectForm" th:object="${searchForm}">
 	<table>
 		<thead>
 			<tr>
@@ -21,10 +24,9 @@
 			</tr>
 			<tr>
 				<th>日付</th>
-				<td colspan="2"><input type="date" id="date"></td>
+				<td colspan="2"><input type="date" id="date" th:field="*{attendanceDate}"></td>
 				<th>状態</th>
-				<td class="input-cell"><select name="statusId"
-					>
+				<td class="input-cell"><select name="statusId" th:field="*{statusId}">
 						<option value="000">選択してください</option>
 						<option th:each="status : ${statusList}"
 							th:value="${status.statusId}" th:text="${status.statusName}"
@@ -56,17 +58,18 @@
 				<td th:text="*{restHours}"></td>
 				<td th:text="*{overtimeHours}"></td>
 				<td th:text="*{workingHours}"></td>
-				<td th:text="*{statusId}"></td>
+				<td th:text="*{statusName}"></td>
 				<td th:text="*{remarks}"></td>
-				<td><a th:href="@{/edit}">修正</a></td>
-				<td><a th:href="@{/delete}">削除</a></td>
+				<td><a th:href="@{/add/{date}/update(date=*{attendanceDate})}" class="btn">修正</a></td>
+				<td><a onclick="location.href='@{/delete}'">削除</a></td>
 			</tr>
 		</tbody>
 	</table>
 	<div class="button-group">
-		<button class="button">検索</button>
-		<button class="button">新規作成</button>
+		<button class="button" type="submit" onclick="submitForm('selectForm','search','post')">検索</button>
+		<button class="button" type="submit" onclick="submitForm('selectForm','add')">新規作成</button>
 		<button class="button">戻る</button>
 	</div>
+	</form>
 </body>
 </html>

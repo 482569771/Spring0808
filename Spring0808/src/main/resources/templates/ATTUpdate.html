@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>勤怠情報登録更新</title>
-<link rel="stylesheet" type="text/css" href="ATTUpdate.css">
+<link rel="stylesheet" type="text/css" href="/ATTUpdate.css">
+<script src="/submitForm.js"></script>
 </head>
 <body>
 	<h1>勤怠情報登録更新</h1>
-	<form th:action="@{/submit}" th:object="${registerForm}"
-		th:method="post">
+	<form id="updateForm" th:object="${registerForm}">
 		<table>
 		
 			<thead>
@@ -69,8 +69,8 @@
 			</tbody>
 		</table>
 		<div class="button-group">
-			<button class="button">更新</button>
-			<button type="submit" class="button">登録</button>
+			<button type="submit" class="button" onclick="submitForm('updateForm','update2','post')">更新</button>
+			<button type="submit" class="button" onclick="submitForm('updateForm','add2','post')">登録</button>
 			<button class="button">戻る</button>
 		</div>
 	</form>

@@ -15,7 +15,7 @@ public class Attendance implements Serializable{
 	private double workingHours;
 	private double overtimeHours;
 	private double absenceHours;
-	private String statusId;
+	private String statusName;
 	private String remarks;
 	
 }

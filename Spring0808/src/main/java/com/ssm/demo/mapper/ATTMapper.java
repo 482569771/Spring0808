@@ -6,14 +6,19 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.ssm.demo.entity.Attendance;
 import com.ssm.demo.form.RegisterForm;
+import com.ssm.demo.form.SearchForm;
 
 @Mapper
 public interface ATTMapper {
 
 	List<Attendance> findById(String employeeId);
-	//
+	
+	List<Attendance> search(SearchForm searchForm);
+	
+	Attendance findByDate(String employeeId,String attendanceDate);
+	
 	void save(RegisterForm registerForm);
-	//保存注册表单数据到数据库
+	
 	void update(RegisterForm registerForm);
 	//更新注册表单数据到数据库
 }

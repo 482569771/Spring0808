@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ssm.demo.dao.ATTDAYDAO;
 import com.ssm.demo.entity.ATTUpdateEntity;
 import com.ssm.demo.entity.Attendance;
+import com.ssm.demo.form.SearchForm;
 import com.ssm.demo.mapper.ATTMapper;
 
 @Service
@@ -20,7 +21,13 @@ public class ATTDAYService {
         return attMapper.findById(id);
         //通过ID获取特定勤怠信息
     }
-
+    public List<Attendance> searchAttendance(SearchForm searchForm) {
+        
+    	searchForm.setEmployeeId("001");
+    	
+    	return attMapper.search(searchForm);
+        //通过ID获取特定勤怠信息
+    }
 }
 //【包名和导入语句】
 //该程序位于com.ssm.demo.service 包中
