@@ -37,7 +37,7 @@ public class ATTDAYController {
 		return "ATTDAY";
 	}
 
-	@PostMapping("/to/{date}/delete")
+	@GetMapping("/to/{date}/delete")
 	public String deletePage(@PathVariable String date) {
 		attdayService.deleteByDate("001", date);
 		return "redirect:/edit";

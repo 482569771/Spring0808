@@ -60,12 +60,8 @@
 				<td th:text="*{workingHours}"></td>
 				<td th:text="*{statusName}"></td>
 				<td th:text="*{remarks}"></td>
-				<td><button class="btn" 
-							data-formid="selectForm"
-							data-url-template="/add/{date}/update"
-							th:data-attendance-date="${attendance.attendanceDate}"
-							onclick="handleUpdate(this)">修正</button></td>
-				<td><a th:href="@{/to/{date}/delete(date=*{attendanceDate})}" onclick="setSubmitMethod('selectForm','post')" class="btn">削除</a></td>
+				<td><a th:href="@{/add/{date}/update(date=*{attendanceDate})}" class="btn">修正</a></td>
+				<td><a th:href="@{/to/{date}/delete(date=*{attendanceDate})}" class="btn">削除</a></td>
 			</tr>
 		</tbody>
 	</table>

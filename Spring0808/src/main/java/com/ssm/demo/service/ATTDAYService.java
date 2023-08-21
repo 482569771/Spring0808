@@ -29,7 +29,7 @@ public class ATTDAYService {
 	}
 
 	public void deleteByDate(String employeeId, String attendanceDate) {
-		attMapper.findByDate(employeeId, attendanceDate);
+		attMapper.logicalDelete(employeeId, attendanceDate);
 
 	}
 }
