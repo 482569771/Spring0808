@@ -12,48 +12,55 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssm.demo.entity.Attendance;
 import com.ssm.demo.entity.Status;
+import com.ssm.demo.form.RegisterForm;
 import com.ssm.demo.form.SearchForm;
 import com.ssm.demo.mapper.StatusMapper;
 import com.ssm.demo.service.ATTDAYService;
 
 @Controller
-public class ATTDAYController {	
-    @Autowired
-    private ATTDAYService attdayService;
-    @Autowired
-    private StatusMapper statusMapper;
-    @GetMapping("/edit") 
-    public String showEditPage(SearchForm searchForm,Model model) {
-    	
-    	
-    	List<Attendance> attendanceList = attdayService.getAttendanceById("001");
+public class ATTDAYController {
+	@Autowired
+	private ATTDAYService attdayService;
+	@Autowired
+	private StatusMapper statusMapper;
 
-    	List<Status> statusList = statusMapper.FindStatusName();
-        model.addAttribute("statusList", statusList);
-    	
-    	
-        //ATTUpdateEntity attendance = attdayService.getAttendanceById(id);
-        model.addAttribute("attendanceList", attendanceList);
-        return "ATTDAY"; 
-    }
+	@GetMapping("/edit")
+	public String showEditPage(SearchForm searchForm, Model model) {
 
-    @GetMapping("/delete") 
-    public String deleteAttendance(@PathVariable Long id) {
-        //attdayService.deleteAttendanceById(id);
-        return "redirect:/update"; 
-    }
-    @PostMapping("/search")
-    public String searchAttendance(SearchForm searchForm,Model model) {
-        // 【日期】和【状态】从数据库中获取符合条件的数据
-        List<Attendance> searchedAttendanceList = attdayService.searchAttendance(searchForm);
+		List<Attendance> attendanceList = attdayService.getAttendanceById("001");
 
-        List<Status> statusList = statusMapper.FindStatusName();
-        model.addAttribute("statusList", statusList);
-        model.addAttribute("attendanceList", searchedAttendanceList);
+		List<Status> statusList = statusMapper.FindStatusName();
+		model.addAttribute("statusList", statusList);
 
-        return "ATTDAY"; 
+		// ATTUpdateEntity attendance = attdayService.getAttendanceById(id);
+		model.addAttribute("attendanceList", attendanceList);
+		return "ATTDAY";
+	}
+
+	@GetMapping("/to/{date}/delete")
+	public String deletePage(@PathVariable String date, Model model, RegisterForm registerform) {
+		attdayService.deleteByDate("001", date);
+		return "redirect:/edit";
+	}
+
+	@GetMapping("/delete")
+	public String deleteAttendance(@PathVariable Long id) {
+		// attdayService.deleteAttendanceById(id);
+		return "redirect:/update";
+	}
+
+	@PostMapping("/search")
+	public String searchAttendance(SearchForm searchForm, Model model) {
+		// 【日期】和【状态】从数据库中获取符合条件的数据
+		List<Attendance> searchedAttendanceList = attdayService.searchAttendance(searchForm);
+
+		List<Status> statusList = statusMapper.FindStatusName();
+		model.addAttribute("statusList", statusList);
+		model.addAttribute("attendanceList", searchedAttendanceList);
+
+		return "ATTDAY";
 //返回模板显示搜索结果
-    }
+	}
 }
 //【@Autowired注解】
 //这个注解用于进行自动依赖注入，将 ATTDAYService 的实例注入到该控制器类中。

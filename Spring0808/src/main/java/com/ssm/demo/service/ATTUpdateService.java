@@ -6,8 +6,6 @@ import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ssm.demo.dao.ATTUpdateDAO;
-import com.ssm.demo.entity.ATTUpdateEntity;
 import com.ssm.demo.entity.Attendance;
 import com.ssm.demo.form.RegisterForm;
 import com.ssm.demo.mapper.ATTMapper;
@@ -24,38 +22,18 @@ public class ATTUpdateService {
 
 	// 提交出勤信息的方法，参数为一个AttendanceRegistrationUpdateEntity对象
 	public void submitAttendance(RegisterForm form) {
-		// 调用attendanceDAO的save方法，将出勤信息对象保存到数据库中
-		// 【作業開始時間】と【作業終了時間】をLocalTime型に変換します。
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-		LocalTime startTime = LocalTime.parse(form.getStartTime(), formatter);
-		LocalTime endTime = LocalTime.parse(form.getEndTime(), formatter);
-		// 【作業時間】を計算します。（【作業終了時間】ー【作業開始時間】ー【休憩時間】）
-		long hours = ChronoUnit.MINUTES.between(startTime, endTime);
-		double workingHours = (double) hours / 60 - form.getRestHours() + form.getOvertimeHours();
-
 		form.setEmployeeId("001");
-		form.setWorkingHours(workingHours);
+		form.setWorkingHours(calcWorkingHours(form));
 		form.setAbsenceHours(1.5);
 		attMapper.save(form);
 	}
 	
 	public void update(RegisterForm form) {
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-		LocalTime startTime = LocalTime.parse(form.getStartTime(), formatter);
-		LocalTime endTime = LocalTime.parse(form.getEndTime(), formatter);
-		
-		long hours = ChronoUnit.MINUTES.between(startTime, endTime);
-		double workingHours = (double) hours / 60 - form.getRestHours() + form.getOvertimeHours();
-
 		form.setEmployeeId("001");
-		form.setWorkingHours(workingHours);
+		form.setWorkingHours(calcWorkingHours(form));
 		form.setAbsenceHours(1.5);
 		attMapper.update(form);
 	}
-	
-	
-	
 	
 	public void updateAttendance(RegisterForm form,String attDate) {
 		Attendance attendance = attMapper.findByDate("001", attDate);
@@ -66,9 +44,21 @@ public class ATTUpdateService {
 		form.setRestHours(attendance.getRestHours());
 		form.setOvertimeHours(attendance.getOvertimeHours());
 		form.setRemarks(attendance.getRemarks());
+	}	
+	
+	private double calcWorkingHours(RegisterForm form) {
+		//リファクタリング
+		// 调用attendanceDAO的save方法，将出勤信息对象保存到数据库中
+		// 【作業開始時間】と【作業終了時間】をLocalTime型に変換します。
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		LocalTime startTime = LocalTime.parse(form.getStartTime(), formatter);
+		LocalTime endTime = LocalTime.parse(form.getEndTime(), formatter);
+		// 【作業時間】を計算します。（【作業終了時間】ー【作業開始時間】ー【休憩時間】）
+		long hours = ChronoUnit.MINUTES.between(startTime, endTime);
+		double workingHours = (double) hours / 60 - form.getRestHours() + form.getOvertimeHours();	
+
+		return workingHours;
 	}
-	
-	
 	
 	
 	

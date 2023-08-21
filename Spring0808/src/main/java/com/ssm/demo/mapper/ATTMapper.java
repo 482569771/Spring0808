@@ -20,7 +20,8 @@ public interface ATTMapper {
 	void save(RegisterForm registerForm);
 	
 	void update(RegisterForm registerForm);
-	//更新注册表单数据到数据库
+	
+	void logicalDelete(String employeeId,String attendanceDate);
 }
 //【@Mapper注解】
 //这是MyBatis的注解，用于标识一个接口为Mapper接口。
