@@ -4,50 +4,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ssm.demo.entity.Status;
+import com.ssm.demo.entity.AttendanceRegistrationUpdateEntity;
 import com.ssm.demo.form.RegisterForm;
-import com.ssm.demo.mapper.StatusMapper;
-import com.ssm.demo.service.ATTUpdateService;
-import java.util.List;
+import com.ssm.demo.service.AttendanceRegistrationUpdateService;
 
 @Controller
-public class ATTUpdateController {
+@RequestMapping("/attendance")
+public class AttendanceRegistrationUpdateController {
 
     @Autowired
-    private ATTUpdateService attendanceService;    
-    private List<Status> statusList;
+    private AttendanceRegistrationUpdateService attendanceService;
+    //处理GET请求，展示勤怠信息登记更新页面
+    @GetMapping("/update")
+    public String showUpdatePage(Model model,RegisterForm registerForm) {
+    	//创建一个空的勤怠信息对象，并添加到模型中
+        model.addAttribute("attendance", new AttendanceRegistrationUpdateEntity());
+        return "ATTUpdate"; 
+        //返回前端页面的文件名
+    }
     
-    @Autowired
-    private StatusMapper statusMapper;
-
-    @GetMapping("/insert")
-    public String showAddPage(Model model,RegisterForm registerForm) {
-    	
-    	statusList = statusMapper.FindStatusName();
-        model.addAttribute("statusList", statusList);
-        model.addAttribute("registerForm", new RegisterForm());
-    	return "ATTUpdate"; 
-    }
-
+    //处理POST请求，提交勤怠信息
     @PostMapping("/submit")
-    public String submitAttendance(RegisterForm registerForm) {
-    	attendanceService.submitAttendance(registerForm);
-        return "redirect:/edit";
-    }
-    @GetMapping("/add/{date}/update")
-    public String showUpdatePage(@PathVariable String date, Model model,RegisterForm registerForm) {  	
-    	statusList = statusMapper.FindStatusName();
-        model.addAttribute("statusList", statusList);
-        attendanceService.updateAttendance(registerForm, date);
-    	return "ATTUpdate"; 
-    }
-    @PostMapping("/update2")
-    public String updateTable(RegisterForm registerForm) {
-    	attendanceService.update(registerForm);
-        return "redirect:/edit";
+    public String submitAttendance(AttendanceRegistrationUpdateEntity attendance) {
+    	//调用服务层的方法，将用户输入的勤怠信息保存到数据库
+    	attendanceService.submitAttendance(attendance);
+    	//重定向到展示勤怠信息登记更新页面的方法
+        return "redirect:/attendance/update";
     }
 }
 
