@@ -61,9 +61,6 @@
 	</update>
 	
 	<update id="logicalDelete">
-	UPDATE T_ATTENDANCE SET DEL_FLG=1 WHERE 
-    EMPLOYEE_ID=#{employeeId} AND
-    ATTENDANCE_DATE = #{attendanceDate}
-
+		UPDATE T_ATTENDANCE SET DEL_FLG=1 WHERE EMPLOYEE_ID=#{employeeId} AND ATTENDANCE_DATE = #{attendanceDate}
 	</update>
 </mapper>
