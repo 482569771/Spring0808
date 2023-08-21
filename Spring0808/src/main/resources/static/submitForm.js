@@ -24,3 +24,5 @@ function submitForm(formId, keyName, method = undefined) {
 	if (method !== undefined) form.method = method;    // フォームのmethod属性にHTTPメソッドを設定
 	form.submit(); // フォームを送信
 }
+
+
