@@ -19,7 +19,11 @@
 			</tr>
 			<tr>
 				<th>年度</th>
-				<td th:text="${year}"></td>
+				<td><select>
+						<option th:each="year : ${yearList}"
+							th:value="${year}" th:text="${year}"
+							th:selected="${year == '2022'}"></option>
+				</select></td>
 			</tr>
 			<tr>
 				<th>月</th>
@@ -28,7 +32,6 @@
 				<th>欠勤日数</th>
 				<th>実働時間（H）</th>
 				<th>残業時間（H）</th>
-				<th>コメント</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,7 +43,6 @@
 				<td th:text="${monthlyAttendance.absenteeismDays}"></td>
 				<td th:text="${monthlyAttendance.actualWorkingHours}"></td>
 				<td th:text="${monthlyAttendance.overtimeHours}"></td>
-				<td th:text="${monthlyAttendance.comments}"></td>
 			</tr>
 		</tbody>
 	</table>

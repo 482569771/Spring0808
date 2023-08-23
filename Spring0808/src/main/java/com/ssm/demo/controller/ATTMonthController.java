@@ -6,7 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ssm.demo.entity.ATTMonthEntity;
+import com.ssm.demo.entity.AttendanceMonth;
+import com.ssm.demo.entity.AttendanceYM;
 import com.ssm.demo.entity.Status;
 import com.ssm.demo.form.SearchForm;
 import com.ssm.demo.mapper.StatusMapper;
@@ -16,7 +17,6 @@ import com.ssm.demo.service.ATTMonthService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/month")
 public class ATTMonthController {
 
     @Autowired
@@ -28,12 +28,12 @@ public class ATTMonthController {
     @Autowired
     private StatusMapper statusMapper;
 
-    @GetMapping
+    @GetMapping("/month")
     public String showAttendanceList(Model model) {
         //List<ATTMonthEntity> monthlyAttendanceList = attMonthService.getMonthlyAttendance();
 
-        List<Status> statusList = statusMapper.FindStatusName();
-        model.addAttribute("statusList", statusList);
+        List<String> yearList = attMonthService.getYear();
+        model.addAttribute("yearList", yearList);
 
         //model.addAttribute("monthlyAttendanceList", monthlyAttendanceList);
        

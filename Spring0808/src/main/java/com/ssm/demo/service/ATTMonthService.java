@@ -1,28 +1,23 @@
 package com.ssm.demo.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ssm.demo.entity.ATTMonthEntity;
+import com.ssm.demo.entity.AttendanceYM;
+import com.ssm.demo.mapper.YearMonthMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ATTMonthService {
 
-    private List<ATTMonthEntity> monthlyAttendanceList = new ArrayList<>();
+	@Autowired
+	private YearMonthMapper yearMonthMapper;
 
-    public List<ATTMonthEntity> getMonthlyAttendance() {
-        return monthlyAttendanceList;
-    }
+	public List<AttendanceYM> getYM() {
+		return yearMonthMapper.findYM();
+	}
+	public List<String> getYear() {
+		return yearMonthMapper.findYear();
+	}
 
-    public void addMonthlyAttendance(ATTMonthEntity attMonthEntity) {
-        monthlyAttendanceList.add(attMonthEntity);
-    }
-
-    public void updateMonthlyAttendance(ATTMonthEntity attMonthEntity) {
-    }
-
-    public void deleteMonthlyAttendance(Long id) {
-
-    }
 }
