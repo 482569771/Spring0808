@@ -36,15 +36,9 @@ public class ATTDAYController {
 	}
 
 	@GetMapping("/to/{date}/delete")
-	public String deletePage(@PathVariable String date, Model model, RegisterForm registerform) {
+	public String deletePage(@PathVariable String date) {
 		attdayService.deleteByDate("001", date);
 		return "redirect:/edit";
-	}
-
-	@GetMapping("/delete")
-	public String deleteAttendance(@PathVariable Long id) {
-		// attdayService.deleteAttendanceById(id);
-		return "redirect:/update";
 	}
 
 	@PostMapping("/search")

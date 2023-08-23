@@ -12,24 +12,26 @@ import com.ssm.demo.mapper.ATTMapper;
 @Service
 public class ATTDAYService {
 
-    @Autowired
-    private ATTMapper attMapper;
+	@Autowired
+	private ATTMapper attMapper;
 
-    public List<Attendance> getAttendanceById(String id) {
-        return attMapper.findById(id);
-        //通过ID获取特定勤怠信息
-    }
-    public List<Attendance> searchAttendance(SearchForm searchForm) {
-        
-    	searchForm.setEmployeeId("001");
-    	
-    	return attMapper.search(searchForm);
-        //通过ID获取特定勤怠信息
-    }
-    public void deleteByDate(String employeeId,String attendanceDate) {
-    		attMapper.findByDate(employeeId, attendanceDate);
-    
-    }
+	public List<Attendance> getAttendanceById(String id) {
+		return attMapper.findById(id);
+		// 通过ID获取特定勤怠信息
+	}
+
+	public List<Attendance> searchAttendance(SearchForm searchForm) {
+
+		searchForm.setEmployeeId("001");
+
+		return attMapper.search(searchForm);
+		// 通过ID获取特定勤怠信息
+	}
+
+	public void deleteByDate(String employeeId, String attendanceDate) {
+		attMapper.logicalDelete(employeeId, attendanceDate);
+
+	}
 }
 //【包名和导入语句】
 //该程序位于com.ssm.demo.service 包中
@@ -58,4 +60,3 @@ public class ATTDAYService {
 //【@Autowired注解】
 //这是Spring的注解，用于自动注入依赖。
 //在这里，它将一个名为attdayDao的ATTDAYDAO实例注入到ATTDAYService类中。
-

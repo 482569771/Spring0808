@@ -61,7 +61,7 @@
 				<td th:text="*{statusName}"></td>
 				<td th:text="*{remarks}"></td>
 				<td><a th:href="@{/add/{date}/update(date=*{attendanceDate})}" class="btn">修正</a></td>
-				<td><a onclick="" th:href="@{/to/{date}/delete(date=*{attendanceDate})}" class="btn">削除</a></td>
+				<td><a th:href="@{/to/{date}/delete(date=*{attendanceDate})}" class="btn">削除</a></td>
 			</tr>
 		</tbody>
 	</table>

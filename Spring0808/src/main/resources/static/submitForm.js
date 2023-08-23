@@ -25,4 +25,3 @@ function submitForm(formId, keyName, method = undefined) {
 	form.submit(); // フォームを送信
 }
 
-
