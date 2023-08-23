@@ -36,6 +36,7 @@ public class ATTMonthController {
         model.addAttribute("statusList", statusList);
 
         //model.addAttribute("monthlyAttendanceList", monthlyAttendanceList);
+       
         model.addAttribute("searchForm", new SearchForm());
 
         return "ATTMonth";
