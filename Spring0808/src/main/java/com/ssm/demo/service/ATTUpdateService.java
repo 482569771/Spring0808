@@ -56,27 +56,9 @@ public class ATTUpdateService {
 		// 【作業時間】を計算します。（【作業終了時間】ー【作業開始時間】ー【休憩時間】）
 		long hours = ChronoUnit.MINUTES.between(startTime, endTime);
 		double workingHours = (double) hours / 60 - form.getRestHours() + form.getOvertimeHours();	
-
 		return workingHours;
-	}
-	
-	
-	
-	
+	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 //上述代码定义了一个名为AttendanceRegistrationUpdateService
 //的服务类，用于处理出勤信息的业务逻辑。
 //它使用了@Service注解，告诉Spring这是一个服务类，
