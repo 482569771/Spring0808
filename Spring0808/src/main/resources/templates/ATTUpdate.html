@@ -22,22 +22,22 @@
 		</div>
 		<div class="input-group">
 			<div>
-				<label>日付</label><br> <input type="date" th:field="*{attendanceDate}">
+				<label>日付</label> <input type="date" th:field="*{attendanceDate}">
 			</div>
 			<div>
-				<label>作業開始時間</label><br> <input type="time" th:field="*{startTime}">
+				<label>作業開始時間</label> <input type="time" th:field="*{startTime}">
 			</div>
 			<div>
-				<label>作業終了時間</label><br> <input type="time" th:field="*{endTime}">
+				<label>作業終了時間</label> <input type="time" th:field="*{endTime}">
 			</div>
 			<div>
-				<label>休憩時間</label><br> <input type="text" th:field="*{restHours}">
+				<label>休憩時間</label> <input type="text" th:field="*{restHours}">
 			</div>
 			<div>
-				<label>残業時間</label><br> <input type="text" th:field="*{overtimeHours}">
+				<label>残業時間</label> <input type="text" th:field="*{overtimeHours}">
 			</div>
 			<div>
-				<label>状態</label><br> <select name="statusId" th:field="*{statusId}">
+				<label>状態</label> <select name="statusId" th:field="*{statusId}">
 					<option value="000">選択してください</option>
 					<option th:each="status : ${statusList}"
 						th:value="${status.statusId}" th:text="${status.statusName}"
@@ -45,7 +45,7 @@
 				</select>
 			</div>
 			<div>
-				<label>作業内容</label><br>
+				<label>作業内容</label>
 				<textarea rows="5" th:field="*{remarks}"></textarea>
 			</div>
 		</div>
