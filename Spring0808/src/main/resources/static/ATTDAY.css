@@ -1,58 +1,158 @@
-/*勤怠情報一覧（日別）.css */
-table {
-    border-collapse: collapse;
-    width: 100%;
+/* ATTDAY.css */
+
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul, ol, li {
+    margin: 0;
+    padding: 0;
 }
 
+/* Set a background color for the entire page */
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+/* Style table headers */
 th, td {
-    border: 1px solid black;
     padding: 8px;
     text-align: center;
+    border: 1px solid #ccc;
 }
 
-th {
-    background-color: lightgray;
+/* Alternate row background color */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-/* 调整日期输入框和状态选择框的样式 */
-#date, #status {
-    width: 80%;
+/* Style input elements */
+input[type="date"], select {
     padding: 6px;
-}
-
-/* 调整按钮组的样式 */
-.button-group {
-    text-align: right;
-    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: #2c3e50;
+    color: #ecf0f1;
     border: none;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px;
-    cursor: pointer;
     border-radius: 4px;
-}
-.btn {
-  display: inline-block;
-  padding: 2px 7px;
-  background-color: #4CAF50; /* 例: 緑色の背景 */
-  color: #ffffff; /* 例: 文字色は白 */
-  border: none; /* ボーダーを非表示に */
-  border-radius: 5px; /* 角を丸くする */
-  text-align: center;
-  text-decoration: none; /* テキストの下線を非表示に */
-  font-size: 16px;
-  cursor: pointer; /* カーソルをポインターに変更 */
-  transition: background-color 0.3s; /* 背景色の遷移効果を追加 */
+    cursor: pointer;
+    margin: 0 5px;
 }
 
-/* ホバー時のスタイル */
-.btn:hover {
-  background-color: #45a049; /* ホバー時の背景色を少し暗く */
+/* Style links */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+/* Add some margin to buttons within links */
+a .btn {
+    margin: 0 5px;
+}
+/*tb1*/
+.tb1 table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tb1 th, .tb1 td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* 将 tb1 的表头背景色设为更显眼的颜色 */
+.tb1 th {
+  background-color: #2c3e50; /* 使用你喜欢的颜色 */
+  color: white; /* 设置文字颜色为白色，以便与背景对比 */
+}
+
+/*tb2*/
+.tb2 label, .tb2 select, .tb2 input[type="date"] {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.tb2 select, .tb2 input[type="date"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.tb2 select {
+  width: 200px;
+}
+
+.tb2 label {
+  font-weight: bold;
+}
+/*tb3*/
+.tb3 table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tb3 th, .tb3 td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* 将 tb3 的表头背景色设为更显眼的颜色 */
+.tb3 th {
+  background-color: #2c3e50; /* 使用你喜欢的颜色 */
+  color: white; /* 设置文字颜色为白色，以便与背景对比 */
+}
+
+.tb3 th.center, .tb3 td.center {
+  text-align: center;
+}
+
+.tb3 th.right, .tb3 td.right {
+  text-align: right;
+}
+
+.tb3 th.left, .tb3 td.left {
+  text-align: left;
+}
+.tb3 th.narrow-header, .tb3 td.narrow-header {
+    width: 80px; /* 调整为你想要的宽度值 */
+}
+.tb3 th.wide-header, .tb3 td.wide-header {
+    width: 300px; /* 调整为你想要的宽度值 */
+}
+/* 为按钮添加阴影效果 */
+.tb3 .btn {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+}
+
+.tb3 .btn:hover {
+    background-color: #03006c;
 }

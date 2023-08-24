@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 public class AttendanceMonth implements Serializable{
 
-    //private int year;
-    private int month;
-    private int workingDays;
+    private String year;
+    private String month;
+    private Integer workingDays;
     private int attendanceDays;
     private int absenteeismDays;
     private double actualWorkingHours;

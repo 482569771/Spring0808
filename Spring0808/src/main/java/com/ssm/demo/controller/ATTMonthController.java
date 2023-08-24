@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ssm.demo.entity.AttendanceMonth;
 import com.ssm.demo.entity.AttendanceYM;
+import com.ssm.demo.entity.BusinessDays;
 import com.ssm.demo.entity.Status;
 import com.ssm.demo.form.SearchForm;
 import com.ssm.demo.mapper.StatusMapper;
@@ -34,6 +35,12 @@ public class ATTMonthController {
 
         List<String> yearList = attMonthService.getYear();
         model.addAttribute("yearList", yearList);
+        
+        List<AttendanceMonth> attendanceMonths;
+        List<BusinessDays> businessDays = attMonthService.getBusinessDays();
+        
+        //attendanceMonths
+        
 
         //model.addAttribute("monthlyAttendanceList", monthlyAttendanceList);
        
