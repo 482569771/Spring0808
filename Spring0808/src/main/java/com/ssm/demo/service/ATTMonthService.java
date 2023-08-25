@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.ssm.demo.entity.AttendanceMonth;
 import com.ssm.demo.entity.AttendanceYM;
-import com.ssm.demo.entity.BusinessDays;
 import com.ssm.demo.mapper.TotalMapper;
 import com.ssm.demo.mapper.YearMonthMapper;
 
@@ -28,10 +27,6 @@ public class ATTMonthService {
 		return yearMonthMapper.findYear();
 	}
 
-	public List<AttendanceMonth> getBusinessDays(String selectedYear) {
-		return totalMapper.findworkday(selectedYear);
-	}
-	
 	public List<AttendanceMonth> getAttMonthList(String selectedYear) {
 		return totalMapper.findAttMonth(selectedYear);
 	}
