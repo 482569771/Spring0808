@@ -5,7 +5,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class BusinessDays implements Serializable{
+public class BusinessDays extends AttendanceMonth implements Serializable{
 
 	private String attendanceYear;
 	private String attendanceMonth;

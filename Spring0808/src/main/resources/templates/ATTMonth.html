@@ -4,48 +4,55 @@
 <title>勤怠情報一覧（月別）</title>
 <link rel="stylesheet" type="text/css" href="/ATTMonth.css">
 <script src="/submitForm.js"></script>
+<script src="/selectSubmitForm.js"></script>
 </head>
+
 <body>
-	<h1>勤怠情報一覧（月別）</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>社員ID</th>
-				<td th:text="${employeeId}"></td>
-				<th>社員名</th>
-				<td th:text="${employeeName}"></td>
-				<th>所属部門</th>
-				<td th:text="${department}"></td>
-			</tr>
-			<tr>
-				<th>年度</th>
-				<td><select>
-						<option th:each="year : ${yearList}"
-							th:value="${year}" th:text="${year}"
-							th:selected="${year == '2022'}"></option>
-				</select></td>
-			</tr>
-			<tr>
-				<th>月</th>
-				<th>営業日数</th>
-				<th>出勤日数</th>
-				<th>欠勤日数</th>
-				<th>実働時間（H）</th>
-				<th>残業時間（H）</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="monthlyAttendance : ${monthlyAttendanceList}">
-				<td th:text="${monthlyAttendance.year}"></td>
-				<td th:text="${monthlyAttendance.month}"></td>
-				<td th:text="${monthlyAttendance.workingDays}"></td>
-				<td th:text="${monthlyAttendance.attendanceDays}"></td>
-				<td th:text="${monthlyAttendance.absenteeismDays}"></td>
-				<td th:text="${monthlyAttendance.actualWorkingHours}"></td>
-				<td th:text="${monthlyAttendance.overtimeHours}"></td>
-			</tr>
-		</tbody>
-	</table>
-	<button class="button">戻る</button>
+	<form id="attMForm">
+		<h1>勤怠情報一覧（月別）</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>社員ID</th>
+					<td>XXXXXX</td>
+					<th>社員名</th>
+					<td>XXXXXX</td>
+					<th>所属部門</th>
+					<td>XXXXXX</td>
+				</tr>
+				<tr>
+					<th>年度</th>
+					<td><select name="selectedYear"
+						onchange="setActionAndSubmitForm('attMForm', '/month/', this.value)">
+							<option th:each="year : ${yearList}" th:value="${year}"
+								th:text="${year}" th:selected="${year == outputYear}"></option>
+					</select></td>
+				</tr>
+				<tr>
+					<th>月</th>
+					<th>営業日数</th>
+					<th>出勤日数</th>
+					<th>欠勤日数</th>
+					<th>欠勤時間（H）</th>
+					<th>実働時間（H）</th>
+					<th>残業時間（H）</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="attendanceMonth : ${attendanceMonths}">
+					<td th:text="${attendanceMonth.attMonth}"></td>
+					<td th:text="${attendanceMonth.dayCount}"></td>
+					<td th:text="${attendanceMonth.workdayCount}"></td>
+					<td th:text="${attendanceMonth.absencedayCount}"></td>
+					<td th:text="${attendanceMonth.absenceHours}"></td>
+					<td th:text="${attendanceMonth.workingHours}"></td>
+					<td th:text="${attendanceMonth.overtimeHours}"></td>
+				</tr>
+
+			</tbody>
+		</table>
+		<button class="button">戻る</button>
+	</form>
 </body>
+
 </html>
