@@ -3,6 +3,8 @@ package com.ssm.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,41 +18,50 @@ import java.util.List;
 @Controller
 public class ATTUpdateController {
 
-    @Autowired
-    private ATTUpdateService attendanceService;    
-    private List<Status> statusList;
-    
-    @Autowired
-    private StatusMapper statusMapper;
+	@Autowired
+	private ATTUpdateService attendanceService;
+	private List<Status> statusList;
 
-    @GetMapping("/insert")
-    public String showAddPage(Model model,RegisterForm registerForm) {
-    	
-    	statusList = statusMapper.FindStatusName();
-        model.addAttribute("statusList", statusList);
-        model.addAttribute("registerForm", new RegisterForm());
-    	return "ATTUpdate"; 
-    }
+	@Autowired
+	private StatusMapper statusMapper;
 
-    @PostMapping("/submit")
-    public String submitAttendance(RegisterForm registerForm) {
-    	attendanceService.submitAttendance(registerForm);
-        return "redirect:/edit";
-    }
-    @GetMapping("/add/{date}/update")
-    public String showUpdatePage(@PathVariable String date, Model model,RegisterForm registerForm) {  	
-    	statusList = statusMapper.FindStatusName();
-        model.addAttribute("statusList", statusList);
-        attendanceService.updateAttendance(registerForm, date);
-    	return "ATTUpdate"; 
-    }
-    @PostMapping("/update2")
-    public String updateTable(RegisterForm registerForm) {
-    	attendanceService.update(registerForm);
-        return "redirect:/edit";
-    }
+	@GetMapping("/insert")
+	public String showAddPage(Model model, RegisterForm registerForm) {
+
+		statusList = statusMapper.FindStatusName();
+		model.addAttribute("statusList", statusList);
+		model.addAttribute("registerForm", new RegisterForm());
+		return "ATTUpdate";
+	}
+
+	@PostMapping("/submit")
+	public String submitAttendance(@Validated RegisterForm registerForm, BindingResult result, Model model) {
+
+		statusList = statusMapper.FindStatusName();
+		model.addAttribute("statusList", statusList);
+		
+		if(result.hasErrors()) {
+			return "ATTUpdate";
+		}
+		
+		attendanceService.submitAttendance(registerForm);
+		return "redirect:/edit";
+	}
+
+	@GetMapping("/add/{date}/update")
+	public String showUpdatePage(@PathVariable String date, Model model, RegisterForm registerForm) {
+		statusList = statusMapper.FindStatusName();
+		model.addAttribute("statusList", statusList);
+		attendanceService.updateAttendance(registerForm, date);
+		return "ATTUpdate";
+	}
+
+	@PostMapping("/update2")
+	public String updateTable(RegisterForm registerForm) {
+		attendanceService.update(registerForm);
+		return "redirect:/edit";
+	}
 }
-
 
 //这个文件定义了一个控制器类，它负责处理用户请求和页面展示。
 //showUpdatePage 方法处理 GET 请求，将勤怠信息登记页面展示给用户。

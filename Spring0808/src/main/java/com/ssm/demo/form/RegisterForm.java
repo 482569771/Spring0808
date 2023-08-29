@@ -1,9 +1,12 @@
 package com.ssm.demo.form;
 import java.io.Serializable;
 
+import com.ssm.demo.validator.TimeCompare;
+
 import lombok.Data;
 
 @Data
+@TimeCompare(startTime = "startTime",endTime = "endTime")
 public class RegisterForm implements Serializable{
 
 	private String employeeId;
