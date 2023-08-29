@@ -24,3 +24,4 @@ function setActionAndSubmitForm(formId, urlPath, value, method = undefined) {
 //这段代码用于控制指定选择框的表单提交。
 //根据选择框的值，设置表单的动作和HTTP方法，并进行表单提交。
 //作者和日期信息也包含在内，以便于解释代码的目的和功能。
+//
