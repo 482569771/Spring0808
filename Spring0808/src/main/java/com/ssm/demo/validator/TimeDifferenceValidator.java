@@ -32,7 +32,7 @@ public class TimeDifferenceValidator implements ConstraintValidator<TimeDifferen
 
 			long minutesDifference = Duration.between(start, end).toMinutes();
 
-			if (minutesDifference <= minDifference) {
+			if (minutesDifference < minDifference) {
 				context.disableDefaultConstraintViolation();
 				context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
 						.addPropertyNode("endTime").addConstraintViolation();

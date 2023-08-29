@@ -4,16 +4,25 @@ import java.io.Serializable;
 import com.ssm.demo.validator.TimeCompare;
 import com.ssm.demo.validator.TimeDifference;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
 @TimeCompare(startTime = "startTime",endTime = "endTime")
 @TimeDifference(startTime = "startTime",endTime = "endTime",minDifference = 15)
+
 public class RegisterForm implements Serializable{
 
 	private String employeeId;
+	
+	@NotBlank(message = "※日付を入力してください")
 	private String attendanceDate;
+	
+	@NotBlank(message = "※開始時間を入力してください")
 	private String startTime;
+	
+	@NotBlank(message = "※終了時間を入力してください")
 	private String endTime;
 	private double restHours;
 	private double workingHours;
